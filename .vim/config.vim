@@ -3,9 +3,14 @@ set background=dark
 colorscheme solarized
 set t_Co=256
 
-set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
-set undodir=~/.vim/undo
+set backupdir=~/.vim/.backup
+set directory=~/.vim/.tmp
+set spellfile=~/.vim/spell/custom.en.utf-8.add
+" Persistent Undo
+if has('persistent_undo')
+  set undofile
+  set undodir=~/.vim/.undo
+endif
 
 set diffopt=filler
 set diffopt+=iwhite
