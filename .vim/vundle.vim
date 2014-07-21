@@ -3,28 +3,18 @@ filetype off
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
+" let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
 
-Plugin 'bling/vim-airline'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Rykka/colorv.vim'
-Plugin 'mhinz/vim-startify'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'mattn/gist-vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'pangloss/vim-javascript'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'leshill/vim-json'
-Plugin 'nono/vim-handlebars'
-Plugin 'othree/html5.vim'
-Plugin 'indenthtml.vim'
-Plugin 'mutewinter/vim-css3-syntax'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'dag/vim2hs'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'wavded/vim-stylus'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'walm/jshint.vim'
+" Source all the plugins with a global variable set that ensures only the
+" Plugin 'name' code will be called.
+let g:vundle_installing_plugins = 1
+for file in split(glob('$HOME/.vim/vundle_plugins/*.vim'), '\n')
+  exe 'source' fnameescape(file)
+endfor
+for file in split(glob('$HOME/.vim/vundle_plugins/custom/*.vim'), '\n')
+  exe 'source' fnameescape(file)
+endfor
+unlet g:vundle_installing_plugins
+
 call vundle#end()
-filetype plugin indent on
